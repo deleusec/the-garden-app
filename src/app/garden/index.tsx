@@ -34,7 +34,7 @@ export default function GardenView() {
 
         // HDR Background (Sky)
         const rgbeLoader = new RGBELoader();
-        rgbeLoader.load("/src/assets/textures/sky.hdr", (hdrTexture) => {
+        rgbeLoader.load("/textures/sky.hdr", (hdrTexture) => {
             hdrTexture.mapping = THREE.EquirectangularReflectionMapping;
             scene.background = hdrTexture;
             scene.environment = hdrTexture;
@@ -58,7 +58,7 @@ export default function GardenView() {
         // Load GLTF Model
         const gltfLoader = new GLTFLoader();
         let skylandBoundingBox : THREE.Box3 | null = null;
-        gltfLoader.load("/src/assets/models/skyland.glb", (gltf) => {
+        gltfLoader.load("/models/skyland.glb", (gltf) => {
             const model = gltf.scene;
 
             // Improve materials

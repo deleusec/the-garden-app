@@ -13,7 +13,6 @@ export default function HomeView() {
     const [loading, setLoading] = useState(true);
     const isTransitioningRef = useRef(false);
 
-
     useEffect(() => {
         const mount = mountRef.current;
         if (!mount) return;
@@ -59,17 +58,17 @@ export default function HomeView() {
             scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
             const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-            directionalLight.position.set(5, 10, 7).normalize();
+            directionalLight.position.set(5, 12, 7).normalize();
             directionalLight.castShadow = true;
             scene.add(directionalLight);
 
             const pastelPinkLight = new THREE.DirectionalLight(0xffc0cb, 0.5);
-            pastelPinkLight.position.set(-5, 10, -7).normalize();
+            pastelPinkLight.position.set(-5, 12, -10).normalize();
             pastelPinkLight.castShadow = true;
             scene.add(pastelPinkLight);
 
             const pastelBlueLightDown = new THREE.DirectionalLight(0xadd8e6, 0.8);
-            pastelBlueLightDown.position.set(0, -5, 0).normalize();
+            pastelBlueLightDown.position.set(0, -10, 0).normalize();
             pastelBlueLightDown.castShadow = true;
             scene.add(pastelBlueLightDown);
         };
@@ -77,16 +76,16 @@ export default function HomeView() {
 
         // Textures
         const textureLoader = new THREE.TextureLoader();
-        const baseColor = textureLoader.load("src/assets/models/water_lily_flower/flower_Mat_baseColor.png");
-        const normalMap = textureLoader.load("src/assets/models/water_lily_flower/flower_Mat_normal.png");
-        const metallicMap = textureLoader.load("src/assets/models/water_lily_flower/flower_Mat_metallic.png");
-        const roughnessMap = textureLoader.load("src/assets/models/water_lily_flower/flower_Mat_roughness.png");
+        const baseColor = textureLoader.load("/models/water_lily_flower/flower_Mat_baseColor.png");
+        const normalMap = textureLoader.load("/models/water_lily_flower/flower_Mat_normal.png");
+        const metallicMap = textureLoader.load("/models/water_lily_flower/flower_Mat_metallic.png");
+        const roughnessMap = textureLoader.load("/models/water_lily_flower/flower_Mat_roughness.png");
 
         // Load OBJ Model
         const objLoader = new OBJLoader();
         let flower: THREE.Object3D | null = null;
 
-        objLoader.load("src/assets/models/water_lily_flower/water_lily_white_flower.obj", (object) => {
+        objLoader.load("/models/water_lily_flower/water_lily_white_flower.obj", (object) => {
             object.traverse((child) => {
                 if ((child as THREE.Mesh).isMesh) {
                     child.layers.set(1);
@@ -129,7 +128,7 @@ export default function HomeView() {
             const particleCount = 600;
             const particleGeometry = new THREE.BufferGeometry();
             const textureLoader = new THREE.TextureLoader();
-            const particleTexture = textureLoader.load("src/assets/textures/particles/1.png");
+            const particleTexture = textureLoader.load("/textures/particles/1.png");
             const positions = new Float32Array(particleCount * 3);
             const velocities = new Float32Array(particleCount);
 
@@ -172,7 +171,7 @@ export default function HomeView() {
             const particleCount = 200;
             const particleGeometry = new THREE.BufferGeometry();
             const textureLoader = new THREE.TextureLoader();
-            const particleTexture = textureLoader.load("src/assets/textures/particles/12.png");
+            const particleTexture = textureLoader.load("/textures/particles/12.png");
 
             const positions = new Float32Array(particleCount * 3);
             const velocities = new Float32Array(particleCount * 3);
