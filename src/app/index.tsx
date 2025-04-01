@@ -352,11 +352,11 @@ export default function HomeView() {
                                 onClick={handleClick}
                                 className="cursor-pointer flex items-center justify-center uppercase gap-2 font-light text-lg text-white py-2 px-4 group scale-100 hover:scale-105 transition-transform duration-150 ease-in-out"
                             >
-                                <img src="/src/assets/floral_ornement_left.svg" alt="Floral Ornament" className="w-8 group-hover:-translate-x-1 transition-transform duration-150 ease-in-out" />
+                                <img src="/floral_ornement_left.svg" alt="Floral Ornament" className="w-8 group-hover:-translate-x-1 transition-transform duration-150 ease-in-out" />
                                 <div>
                                     Discover
                                 </div>
-                                <img src="/src/assets/floral_ornement_right.svg" alt="Floral Ornament" className="w-8 group-hover:translate-x-1 transition-transform duration-150 ease-in-out" />
+                                <img src="/floral_ornement_right.svg" alt="Floral Ornament" className="w-8 group-hover:translate-x-1 transition-transform duration-150 ease-in-out" />
                             </div>
                         </div>
                     )}
