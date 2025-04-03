@@ -4,7 +4,7 @@ import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import gsap from "gsap";
 
-export default function GardenSceneIntro({ onComplete } : { onComplete: () => void }) {
+export default function GardenSceneIntro({ onComplete }: { onComplete: () => void }) {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,17 +30,17 @@ export default function GardenSceneIntro({ onComplete } : { onComplete: () => vo
       const particleCount = 600;
       const geometry = new THREE.BufferGeometry();
       const positions = new Float32Array(particleCount * 3);
-    
+
       for (let i = 0; i < particleCount; i++) {
         const x = (Math.random() - 0.5) * 300;
         const y = (Math.random() - 0.5) * 200;
         const z = (Math.random() - 0.5) * 300;
         positions.set([x, y, z], i * 3);
       }
-    
+
       geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
       const texture = new THREE.TextureLoader().load("/textures/particles/1.png");
-    
+
       const material = new THREE.PointsMaterial({
         size: 1,
         map: texture,
@@ -50,13 +50,13 @@ export default function GardenSceneIntro({ onComplete } : { onComplete: () => vo
         color: 0xffe0f0,
         depthWrite: false
       });
-    
+
       const particles = new THREE.Points(geometry, material);
       scene.add(particles);
-    
+
       return particles;
     };
-    
+
     const particles = createParticles();
 
     const texts = [
@@ -177,7 +177,7 @@ export default function GardenSceneIntro({ onComplete } : { onComplete: () => vo
             duration: 6,
             ease: "power2.inOut",
             onComplete: () => {
-              onComplete(); 
+              onComplete();
             },
           });
         }
@@ -239,7 +239,28 @@ export default function GardenSceneIntro({ onComplete } : { onComplete: () => vo
     };
   }, [onComplete]);
 
+  const handleClick = () => {
+    if (onComplete) {
+      onComplete();
+    }
+  };
+
   return (
-    <div ref={mountRef} className="relative w-full h-screen overflow-hidden bg-black" />
+    <div ref={mountRef} className="relative w-full h-screen overflow-hidden bg-black">
+      <div className="absolute right-10 bottom-10">
+        <div
+          onClick={handleClick}
+          className="cursor-pointer flex items-center justify-center gap-2 text-4xl text-white py-2 px-4 group scale-100 hover:scale-105 transition-transform duration-150 ease-in-out drop-shadow-[0_0_2px_rgba(0,0,0,0.4)]"
+        >
+          <img src="/floral_ornement_left.svg" alt="Floral Ornament" className="w-8 group-hover:-translate-x-1 transition-transform duration-150 ease-in-out" />
+          <div>
+            Next
+          </div>
+          <img src="/floral_ornement_right.svg" alt="Floral Ornament" className="w-8 group-hover:translate-x-1 transition-transform duration-150 ease-in-out" />
+        </div>
+
+      </div>
+    </div>
+
   );
 }

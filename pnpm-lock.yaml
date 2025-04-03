@@ -11,6 +11,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.1.0
         version: 4.1.0
+      cannon-es:
+        specifier: ^0.20.0
+        version: 0.20.0
       gsap:
         specifier: ^3.12.7
         version: 3.12.7
@@ -705,6 +708,9 @@ packages:
 
   caniuse-lite@1.0.30001707:
     resolution: {integrity: sha512-3qtRjw/HQSMlDWf+X79N206fepf4SOOU6SQLMaq/0KkZLmSjPxAkBOQQ+FxbHKfHmYLZFfdWsO3KA90ceHPSnw==}
+
+  cannon-es@0.20.0:
+    resolution: {integrity: sha512-eZhWTZIkFOnMAJOgfXJa9+b3kVlvG+FX4mdkpePev/w/rP5V8NRquGyEozcjPfEoXUlb+p7d9SUcmDSn14prOA==}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -1875,6 +1881,8 @@ snapshots:
   callsites@3.1.0: {}
 
   caniuse-lite@1.0.30001707: {}
+
+  cannon-es@0.20.0: {}
 
   chalk@4.1.2:
     dependencies:

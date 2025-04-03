@@ -207,7 +207,7 @@ export default function HomeView() {
             particleGeometry.setAttribute("velocity", new THREE.BufferAttribute(velocities, 3));
             particleGeometry.setAttribute("acceleration", new THREE.BufferAttribute(accelerations, 1));
             particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-            particleGeometry.setAttribute("startDelay", new THREE.BufferAttribute(startDelays, 1)); // 👈
+            particleGeometry.setAttribute("startDelay", new THREE.BufferAttribute(startDelays, 1)); 
 
             const particleMaterial = new THREE.PointsMaterial({
                 map: particleTexture,
@@ -341,8 +341,8 @@ export default function HomeView() {
             ) : (
                 <>
                     {showUI && (
-                        <div className="absolute inset-0 p-20 flex flex-col items-center justify-between text-white z-10 gap-28 drop-shadow-[0_0_1px_rgba(0,0,0,0.5)]">
-                            <div className="flex flex-col items-center justify-center gap-4">
+                        <div className="absolute inset-0 p-20 flex flex-col items-center justify-between text-white z-10 gap-28">
+                            <div className="flex flex-col items-center justify-center gap-4 drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]">
                                 <h1 className="text-7xl font-beverly">Welcome</h1>
                                 <h2 className="text-4xl font-beverly">
                                     <span className="text-primary">to</span> the Garden
@@ -350,7 +350,7 @@ export default function HomeView() {
                             </div>
                             <div
                                 onClick={handleClick}
-                                className="cursor-pointer flex items-center justify-center gap-2 text-4xl text-white py-2 px-4 group scale-100 hover:scale-105 transition-transform duration-150 ease-in-out"
+                                className="cursor-pointer flex items-center justify-center gap-2 text-4xl text-white py-2 px-4 group scale-100 hover:scale-105 transition-transform duration-150 ease-in-out drop-shadow-[0_0_2px_rgba(0,0,0,0.4)]"
                             >
                                 <img src="/floral_ornement_left.svg" alt="Floral Ornament" className="w-8 group-hover:-translate-x-1 transition-transform duration-150 ease-in-out" />
                                 <div>
