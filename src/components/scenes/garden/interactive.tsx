@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import * as CANNON from "cannon-es";
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 export default function GardenSceneInteractive() {
     const mountRef = useRef<HTMLDivElement>(null);
@@ -103,7 +104,8 @@ export default function GardenSceneInteractive() {
 
         // ----- LOAD GLTF
         const gltfLoader = new GLTFLoader();
-        gltfLoader.load("/models/garden/garden.glb", (gltf) => {
+        gltfLoader.setMeshoptDecoder(MeshoptDecoder);
+        gltfLoader.load("/models/garden/garden-optimized.glb", (gltf) => {
             const model = gltf.scene;
             const sphereRadius = 0.3;
             const sphereMaterial = new CANNON.Material("sphereMaterial");
@@ -138,6 +140,8 @@ export default function GardenSceneInteractive() {
 
             // ----- TRAVERSE MODEL
             model.traverse((child) => {
+                console.log(child.name, child);
+                
                 if ((child as THREE.Mesh).isMesh) {
                     const mesh = child as THREE.Mesh;
                     mesh.castShadow = true;
